@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Dia das Mães</title>
+    <meta property="og:title" content="Uma surpresa para você, mamãe! ❤️">
+    <meta property="og:description" content="Abra para ver a mensagem que preparei.">
+    <style>
+        /* Estilos base para a página */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffe6e6 0%, #ffb3c6 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* O "cartão" branco no centro */
+        .card {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px 25px;
+            border-radius: 24px;
+            box-shadow: 0 15px 30px rgba(214, 51, 108, 0.2);
+            text-align: center;
+            max-width: 350px;
+            width: 100%;
+        }
+
+        /* Título */
+        h1 {
+            color: #d6336c;
+            font-size: 28px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Área da mensagem */
+        .message {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        /* Botão de música */
+        #play-btn {
+            background-color: #d6336c;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(214, 51, 108, 0.4);
+            transition: transform 0.2s, background-color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            gap: 10px;
+        }
+
+        #play-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Corações decorativos */
+        .decoration {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="decoration">💖✨</div>
+        
+        <h1>Feliz Dia das Mães!</h1>
+        
+        <p class="message">
+            [Escreva sua mensagem aqui. Diga o quanto você a ama, agradeça por tudo que ela já fez e deixe esse espaço com a sua cara. O texto se ajustará automaticamente à tela do celular.]
+        </p>
+
+        <audio id="bg-music" src="music.mp3"></audio>
+
+        <button id="play-btn">
+            <span>🎵</span> Tocar Música
+        </button>
+    </div>
+
+    <script>
+        // Lógica para fazer o botão tocar e pausar a música
+        const audio = document.getElementById('bg-music');
+        const btn = document.getElementById('play-btn');
+        let isPlaying = false;
+
+        btn.addEventListener('click', () => {
+            if(isPlaying) {
+                audio.pause();
+                btn.innerHTML = '<span>🎵</span> Tocar Música';
+            } else {
+                audio.play();
+                btn.innerHTML = '<span>⏸️</span> Pausar Música';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Caso a música termine, o botão volta ao estado inicial
+        audio.onended = function() {
+            isPlaying = false;
+            btn.innerHTML = '<span>🎵</span> Tocar Música';
+        };
+    </script>
+
+</body>
+</html>
